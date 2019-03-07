@@ -7,5 +7,5 @@ requirement
 $ pip install pytube  
 $ pip install docopt  
 
-quick start  
+quick start (download to current directory)  
 $ python ~/path_to_youtube_dl/youtube_dl.py -u https://youtube.com/watch?v=XXXXXXXXXXX
