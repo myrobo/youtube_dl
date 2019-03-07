@@ -3,7 +3,7 @@ video downloader from youtube.
 description : https://sy-base.com/myrobotics/python/pytube/  
 
 
-requirement :  
+requirement  
 $ pip install pytube  
 $ pip install docopt  
 
