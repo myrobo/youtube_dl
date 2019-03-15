@@ -4,11 +4,12 @@
 """
  
 usage:
-    ydl.py [-h|--help] [-u|--url <youtube_url>] [-l|--leave]
+    ydl.py [-h|--help] [-u|--url <youtube_url>] [-d|--directory <path>] [-l|--leave]
  
 options:
     -h, --help                show this help message and exit
     -u, --url <youtube_url>   designate youtube url
+    -d, --directory <path>    designate directory to save video
     -l, --leave               leave original file. (this program conbines video and audio file ) 
  
 """
@@ -45,9 +46,6 @@ def show_progress_bar(stream, chunk, file_handle, bytes_remaining ):
 #     os.makedirs( dl_dir_audio )
 # if not os.path.exists( dl_dir_both ):
 #     os.makedirs( dl_dir_both )
-if not os.path.exists( dl_dir ):
-    os.makedirs( dl_dir )
-
 args = docopt(__doc__)
 print( args )
 if len( args['--url'] ) == 0:
@@ -55,6 +53,17 @@ if len( args['--url'] ) == 0:
     dl_link = input( " >>> " )
 else:
     dl_link = args['--url'][0]
+
+if dl_link.find('https') != 0:
+    dl_link = 'https://www.youtube.com/watch?v=' + dl_link
+
+if len( args['--directory'] ) != 0:
+    dl_dir = args['--directory'][0]
+    print( dl_dir )
+
+if not os.path.exists( dl_dir ):
+    os.makedirs( dl_dir )
+
     
 
 yt = YouTube( dl_link )
