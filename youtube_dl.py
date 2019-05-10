@@ -108,7 +108,12 @@ target_audio = yt.streams.filter( mime_type="audio/mp4" ).order_by('abr').desc()
 print( target_video )
 
 # somewhat '.' is replaced with space
-title = yt.title.replace( '.', '' ).replace( '/', '' )
+escape_chars = [ '.', '/' ]
+title = yt.title
+for ec in escape_chars:
+    title = title.replace( ec, '' )
+
+
 audio_path = dl_dir + "/" + title + "_audio.mp4" 
 video_path = dl_dir + "/" + title + "_video.mp4" 
 output_path = dl_dir + "/" + title + ".mp4" 
